@@ -1,0 +1,34 @@
+Object class is the parent class of all classes in java.
+Throwable is the class which is the parent of Error and Exception class
+
+Object
+   |
+   └── Throwable (The Root of all "Catchables")
+        |
+        ├── Error (System-level/Fatal - Do NOT catch)
+        |    ├── VirtualMachineError
+        |    |    ├── OutOfMemoryError
+        |    |    └── StackOverflowError
+        |    ├── LinkageError
+        |    |    └── NoClassDefFoundError
+        |    ├── ThreadDeath
+        |    └── IOError (Severe physical I/O failure)
+        |
+        └── Exception (Application-level - OK to catch)
+             |
+             ├── RuntimeException (Unchecked - Logic errors)
+             |    ├── ArithmeticException
+             |    ├── NullPointerException
+             |    ├── ArrayIndexOutOfBoundsException
+             |    └── IllegalArgumentException
+             |
+             ├── IOException (Checked - External issues)
+             |    ├── FileNotFoundException
+             |    └── EOFException
+             |
+             ├── SQLException (Checked - Database issues)
+             |
+             └── ClassNotFoundException (Checked)
+             
+In the above Exceptions, all the exception are Checked Exceptions, meaning compiler won't force us to handle those exceptions.
+And the SQLException,IOException are checked expression because compiler will force us to handle that type of exceptions.
