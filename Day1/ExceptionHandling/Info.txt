@@ -1,0 +1,28 @@
+Exception
+   |
+   ---> InvalidAgeException   (checked)
+
+RuntimeException
+   |
+   ---> InvalidAmountException (unchecked)
+
+
+Interview Point:
+    A custom exception is just a class.
+    Example:
+            class MyException extends Exception
+        So internally Java treats it just like any other class.
+        But when thrown:
+            throw new MyException("error");
+        the exception handling mechanism of JVM starts working.
+
+Key Things to Remember
+
+✔ Custom exception = user defined exception class
+✔ Created using extends Exception or extends RuntimeException
+✔ throw → used to throw it
+✔ throws → used in method declaration
+✔ Useful for business logic errors
+
+throw  → create and throw exception
+throws → declare that a method may throw exception
