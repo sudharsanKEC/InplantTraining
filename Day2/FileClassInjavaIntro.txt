@@ -1,0 +1,51 @@
+What is a File class in java?
+        File is a class in the java.io package.
+        It is used to represent a file or directory path in the system.
+
+        It is used to represent a file or directory path in the system.
+        Important point ⚠️
+            The File class does NOT read or write file data.
+            It only represents the file and performs operations on it.
+        Eg:
+            For example, with File you can:
+                Check if a file exists
+                Create a file
+                Delete a file
+                Get file name
+                Get file path
+                Check file size
+                Check if it is a directory or file
+        Used for file metadata and file system operations.
+
+Importing the File class:
+    import java.io.File;
+
+Important methods of FIle class:
+
+| Method              | Purpose            |
+| ------------------- | ------------------ |
+| `createNewFile()`   | creates file       |
+| `exists()`          | checks file exists |
+| `delete()`          | deletes file       |
+| `getName()`         | returns file name  |
+| `getAbsolutePath()` | returns full path  |
+| `length()`          | file size          |
+| `canRead()`         | readable or not    |
+| `canWrite()`        | writable or not    |
+| `isFile()`          | checks if file     |
+| `isDirectory()`     | checks directory   |
+| `mkdir()`           | create folder      |
+| `list()`            | list files         |
+
+
+Developer Insights:
+    In real Java backend development, the File class is often used to:
+        Check if uploaded files exist
+        Store file paths
+        Work with directories
+        Manage server files
+    Example:
+        uploads/
+            profile1.jpg
+            profile2.jpg
+    Java backend uses File to manage these.    
