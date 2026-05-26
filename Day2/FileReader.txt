@@ -1,0 +1,107 @@
+In Java, Java FileReader and FileWriter are used for character-based file handling. They are part of the Java IO package java.io.
+
+Why FileReader and FileWriter Exist
+    In Java there are two types of streams:
+    Byte Streams
+        Work with raw bytes.
+        Examples:
+            FileInputStream
+            FileOutputStream
+        Used for:
+            Images
+            Videos
+            PDFs
+            Binary files
+
+    Character Streams
+        Work with characters (text).
+        Examples:
+            FileReader
+            FileWriter
+        Used for:
+            .txt
+            .csv
+            .json
+            .xml
+            Any text file
+        So the rule:
+        | File Type    | Stream          |
+        | ------------ | --------------- |
+        | Binary files | FileInputStream |
+        | Text files   | FileReader      |
+
+    Class Hierarchy
+        FileReader
+            Object
+                ↓
+            Reader (abstract class)
+                ↓
+            InputStreamReader
+                ↓
+            FileReader
+        FileWriter
+            Object
+                ↓
+            Writer (abstract class)
+                ↓
+            OutputStreamWriter
+                ↓
+            FileWriter
+    
+    So internally:
+        FileReader = InputStreamReader + FileInputStream
+        FileWriter = OutputStreamWriter + FileOutputStream
+    This is very important for understanding the internal working.
+
+Internal Working of FileReader
+    When you write:
+        FileReader fr = new FileReader("data.txt");
+    Internally this happens:
+        data.txt (bytes in file)
+                ↓
+        FileInputStream reads bytes
+                ↓
+        InputStreamReader converts bytes → characters
+                ↓
+        FileReader gives characters to your program
+
+Flow
+        File → FileInputStream → InputStreamReader → FileReader → Your Program
+    Why conversion?
+        Because files store bytes, but Java programs work with characters.
+
+Important Constructors
+Using file name
+    FileReader fr = new FileReader("data.txt");
+Using File object
+    File f = new File("data.txt");
+    FileReader fr = new FileReader(f);
+
+Important Methods of FileReader
+
+1) read()
+        Reads one character.
+        int read()
+    Returns:
+        character ASCII value
+        -1 when file ends
+
+2) read(char[] buffer)
+        Reads multiple characters.
+            int read(char[] buffer)
+        Returns:
+            number of characters read
+
+4) close()
+    Closes the file.
+        fr.close();
+    Why important?
+    Because file resources are limited in OS.
+
+
+
+
+
+
+
+

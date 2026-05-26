@@ -1,0 +1,4 @@
+The FileInputStream and FileOutputStream will helps us to read an image data as bytes from one image and write it to another image.
+Same as for others like audio, video, PDFs as well.
+
+We combinely use both FOS and FIS.

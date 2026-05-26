@@ -1,0 +1,93 @@
+FileWriter (Writing into file)
+    FileWriter writes characters into a file.
+    Example:
+            FileWriter fw = new FileWriter("data.txt");
+            fw.write("Hello World");
+            fw.close();
+        Output in file:
+            Hello World
+
+FileWriter Constructors
+    1)Overwrite file
+            FileWriter fw = new FileWriter("data.txt");
+        If file exists → content erased.
+    2)Append mode
+            FileWriter fw = new FileWriter("data.txt", true);
+        true means append mode.
+        Example
+            File contains:
+                Hello
+            After writing:
+                Hello
+                World
+    3)Important FileWriter Methods
+            i) write(int c)
+                Writes a single character.
+                    fw.write('A');
+                File:
+                    A
+            ii) write(char[] arr)
+                    char[] arr = {'H','E','L','L','O'};
+                    fw.write(arr);
+                File:
+                    HELLO
+            iii) write(String str)
+                    Most commonly used.
+                        fw.write("Hello Java");
+            iv) write(String str, int offset, int length)
+                    Example:
+                        fw.write("HelloWorld", 5, 5);
+                    Output:
+                        World
+            v) close():
+                    When you call:
+                        fw.close();
+                    It performs two important actions:
+                        1) Flushes remaining data
+                            Any characters still in memory (buffer)
+                            Are written to the file
+                        2) Releases system resources
+                            Closes file handle
+                            Prevents memory/resource leaks
+            vi) flush()
+                    Forces writing buffered data to file.
+                        fw.flush();
+                    Why needed?
+                        Because writers use buffer memory.
+                    Flow:
+                        Program → Buffer → File
+                    Without flush, data may stay in buffer.
+                    close() automatically calls flush.
+
+Important interview point
+    close() internally calls flush()
+    So:
+        close() = flush() + release resources
+
+Note:
+    Is flush() only for writing?
+            YES — flush() is for output (writing), not for reading
+        Used in:
+            FileWriter
+            BufferedWriter
+            OutputStream
+        Not used in:
+            FileInputStream
+            BufferedReader (for reading)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
