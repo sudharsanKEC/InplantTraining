@@ -1,0 +1,67 @@
+What is a BufferedReader?
+    BufferedReader is a class in java which is used to read text efficiently from a file or input stream.
+    It belongs to: java.io.BufferedReader
+    It wraps another reader(like FileReader) inside it and uses buffer to improve its performance.
+
+Why BufferedReader is needed?
+    If we use: FileReader fr = new FileReader("File.txt");
+        It reads one character at a time from disk.
+        Disk access is slow.
+    So to overcome this problem, buffering is introduced in java.
+    Intuition of BufferedReader working in java:
+        Instead of reading 1 char at a time from disk:
+            BufferedReader reads large chunks into memory (buffer)
+            Then gives you data from memory (fast)
+
+How BufferedReader works internally?
+    Without BufferedReader:
+        Disk → 1 char → Program → 1 char → Disk → ...
+        (very slow ❌)
+
+    With BufferedReader:
+        Disk → [8KB buffer] → Program reads from memory
+        (fast ✅)
+        Default buffer size = 8192 characters (8KB)
+
+How to create a BufferedReader?
+    import java.io.*;
+    BufferedReader br = new BufferedReader(new FileReader("file.txt"));
+    Note:
+        FileReader      --> connects to file
+        BufferedReader  --> adds speed
+
+Important method of BufferedReader:
+    1) read():
+        int ch = br.read();
+            Reads one character
+            Returns ASCII (int)
+            Returns -1 at end
+    2) read(char[] buffer):
+            char[] arr = new char[5];
+            br.read(arr);
+        Reads multiple characters into array
+    3) readLine():
+        String line = new br.readLine();
+            Reads one full line
+            Returns null when file ends
+        This is why BufferedReader is very popular
+    4) ready():
+            br.ready();
+        Checks if data is available
+    5) close()
+            br.close();
+        Releases resources
+
+
+Why BufferedReader is Faster
+    Key reason:
+        Fewer disk I/O operations
+        Uses memory buffer
+        Reduces system calls
+
+Important Concept (VERY IMPORTANT)
+    BufferedReader works only with TEXT
+        Good for: .txt, .java, .csv
+        NOT for: .pdf, .mp4, .jpg
+    For binary files → use:
+        FileInputStream / BufferedInputStream
