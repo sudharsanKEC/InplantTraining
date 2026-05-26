@@ -1,0 +1,85 @@
+What is BufferedWriter?
+        BufferedWriter is used to write text efficiently to a file.
+            BufferedWriter bw = new BufferedWriter(new FileWriter("file.txt"));
+        Writes characters (text)
+        Uses buffering (fast)
+
+Why do we need it?
+        If you use:
+            FileWriter fw = new FileWriter("file.txt");
+            fw.write("Hello");
+        Every write may go directly to disk → slow ❌
+
+With BufferedWriter:
+            Program → Buffer → Disk
+        Data is stored in memory first
+        Written in chunks → fast
+
+Internal Working
+        Your Program → BufferedWriter (8KB buffer) → FileWriter → File
+        It collects data in buffer and writes when:
+            Buffer is full
+            You call flush()
+            You call close()
+
+Important methods:
+        1. write(int c)
+                bw.write('A');
+            Writes a single character
+
+        2. write(char[] arr)
+                char[] arr = {'H','e','l','l','o'};
+                bw.write(arr);
+            Writes entire character array
+
+        3. write(char[] arr, int off, int len)
+                bw.write(arr, 1, 3);
+            Writes part of array
+            Example:
+                Hello → "ell"
+        
+        4. write(String str)
+                bw.write("Hello World");
+            Most commonly used
+
+        5. write(String str, int off, int len)
+                bw.write("HelloWorld", 5, 5);
+            The above line writes 5 characters from the index 5.
+            Output:
+                World
+
+        6. newLine() ⭐
+                bw.newLine();
+            Adds a new line
+            Platform independent (better than \n)
+        
+        7. flush()
+                bw.flush();
+            Forces buffer → file
+            Useful when you want immediate write
+            Without closing
+
+        8. close()
+                bw.close();
+            Closes stream
+            Automatically calls flush()
+
+BufferedWriter vs FileWriter
+| Feature    | FileWriter | BufferedWriter |
+| ---------- | ---------- | -------------- |
+| Speed      | Slow ❌    | Fast ✅       |
+| Buffer     | ❌         | ✅            |
+| newLine()  | ❌         | ✅            |
+| Efficiency | Low        | High           |
+
+
+Important Rules
+    Works only with text
+    Must call close() or use try-with-resources
+    Buffer size ≈ 8KB
+
+Append Mode (VERY USEFUL)
+    BufferedWriter bw = new BufferedWriter(
+        new FileWriter("file.txt", true)
+    );
+    true = append instead of overwrite
