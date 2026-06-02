@@ -1,0 +1,17 @@
+
+import java.sql.*;
+
+public class MetadataAndAdvancedJDBC {
+    public static void main(String[] args) throws Exception {
+
+        Connection con = DriverManager.getConnection(
+            "jdbc:mysql://localhost:3306/company","root","password");
+
+        DatabaseMetaData meta = con.getMetaData();
+
+        System.out.println(meta.getDatabaseProductName());
+        System.out.println(meta.getDriverName());
+
+        con.close();
+    }
+}
