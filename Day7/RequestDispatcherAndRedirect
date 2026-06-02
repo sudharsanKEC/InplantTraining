@@ -1,0 +1,20 @@
+
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import java.io.*;
+
+public class RequestDispatcherAndRedirect extends HttpServlet {
+
+    protected void doGet(HttpServletRequest req,
+                         HttpServletResponse res)
+                         throws Exception {
+
+        RequestDispatcher rd =
+            req.getRequestDispatcher("home.jsp");
+
+        rd.forward(req, res);
+
+        // Redirect Example
+        // res.sendRedirect("home.jsp");
+    }
+}
